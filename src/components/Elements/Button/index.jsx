@@ -1,20 +1,27 @@
 import PropTypes from 'prop-types';
+
 const Button = (props) => {
   const { children, variant, type } = props;
 
   return (
-    <Button
-      className={`h-12 rounded-md text-sm ${variant}`}
+    <button
+      className={`h-12 rounded-md text-sm w-full text-white ${variant === 'primary' ? 'bg-primary' : 'bg-secondary'}`}
       type={type}
     >
       {children}
-    </Button>
-  )
-}
+    </button>
+  );
+};
 
 Button.propTypes = {
   children: PropTypes.node.isRequired,
-  variant: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  variant: PropTypes.string,
+  type: PropTypes.string,
 };
-export default Button
+
+Button.defaultProps = {
+  variant: 'primary',
+  type: 'button',
+};
+
+export default Button;

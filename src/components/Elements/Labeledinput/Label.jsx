@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 
 const Label = (props) => {
   const { htmlFor, children } = props;
@@ -10,7 +10,6 @@ const Label = (props) => {
   );
 };
 
-// PropTypes validation
 Label.propTypes = {
   htmlFor: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,

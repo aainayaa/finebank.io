@@ -1,8 +1,8 @@
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 import Logo from "../Elements/Logo";
 
 const AuthLayout = (props) => {
-  const { children } = props;
+  const { children, type } = props;
 
   return (
     <div className="flex justify-center min-h-screen items-center bg-special-mainBg">
@@ -14,12 +14,12 @@ const AuthLayout = (props) => {
         {/* form start */}
         <div className="mt-16"> {children} </div>
         {/* form end */}
-        {/* teks start */}
+        {/* text start */}
         <div className="my-9 px-7 flex justify-center text-xs text-gray-03 items-center flex-col static">
           <div className="border border-gray-05 w-full"></div>
           <div className="px-2 bg-special-mainBg absolute"> or sign in with</div>
         </div>
-        {/* teks end */}
+        {/* text end */}
         {/* sign in with google start */}
         <div className="mb-8">
           <button
@@ -69,8 +69,25 @@ const AuthLayout = (props) => {
         {/* sign in with google end */}
         {/* link start */}
         <div className="flex justify-center">
-          <a className="text-primary text-sm font-bold">Create an account</a>
+          {type === "sign up" ? (
+            <>
+              <a href="/register" className="text-primary text-sm font-bold">Create an account</a>
+            </>
+          ) : (
+            <a href="/register" className="text-primary text-sm font-bold">Create an account</a>
+          )}
         </div>
+
+        <div className="flex justify-center">
+          {type === "sign up" ? (
+            <>
+              <a href="/forgotpass" className="text-gray-01 text-sm font-bold">Forgot Password</a>
+            </>
+          ) : (
+            <a href="/forgotpass" className="text-gray-01 text-sm font-bold">Forgot </a>
+          )}
+        </div>
+
         {/* link end */}
       </div>
       {/* container end */}
@@ -78,9 +95,13 @@ const AuthLayout = (props) => {
   );
 };
 
-// PropTypes validation
 AuthLayout.propTypes = {
   children: PropTypes.node.isRequired,
+  type: PropTypes.string,
+};
+
+AuthLayout.defaultProps = {
+  type: 'sign in',
 };
 
 export default AuthLayout;

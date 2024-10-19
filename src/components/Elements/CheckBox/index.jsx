@@ -1,17 +1,26 @@
-const CheckBox = () => {
+import PropTypes from 'prop-types';
+
+const CheckBox = (props) => {
+  const { label, name } = props;
+
   return (
     <>
-     <input
-            type="checkbox"
-            className="text-sm accent-primary"
-            name="status"
-            id="status"
-          />
-          <label htmlFor="status" className="text-sm text-gray-01 ms-6">
-            Keep me signed in
-          </label>
+      <input
+        type="checkbox"
+        className="text-sm accent-primary"
+        name={name}
+        id={name}
+      />
+      <label htmlFor={name} className="text-sm text-gray-01 ms-6">
+        {label}
+      </label>
     </>
-  )
-}
+  );
+};
 
-export default CheckBox
+CheckBox.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+};
+
+export default CheckBox;

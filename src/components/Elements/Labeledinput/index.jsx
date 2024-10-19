@@ -1,6 +1,6 @@
-import PropTypes from "prop-types";
-import Input from "./Input";
-import Label from "./Label";
+import PropTypes from 'prop-types';
+import Input from './Input';
+import Label from './Label';
 
 const LabeledInput = (props) => {
   const { label, name, type, placeholder } = props;
@@ -13,12 +13,16 @@ const LabeledInput = (props) => {
   );
 };
 
-// PropTypes validation
 LabeledInput.propTypes = {
   label: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  type: PropTypes.string,
   placeholder: PropTypes.string,
+};
+
+LabeledInput.defaultProps = {
+  type: 'text',
+  placeholder: '',
 };
 
 export default LabeledInput;
