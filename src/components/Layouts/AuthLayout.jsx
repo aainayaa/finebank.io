@@ -1,4 +1,5 @@
-import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types'; // Import PropTypes
 import Logo from "../Elements/Logo";
 
 const AuthLayout = (props) => {
@@ -71,20 +72,20 @@ const AuthLayout = (props) => {
         <div className="flex justify-center">
           {type === "sign up" ? (
             <>
-              <a href="/register" className="text-primary text-sm font-bold">Create an account</a>
+              <Link to ="/register" className="text-primary text-sm font-bold"> Create an account </Link>
             </>
           ) : (
-            <a href="/register" className="text-primary text-sm font-bold">Create an account</a>
+            <Link to ="/register" className="text-primary text-sm font-bold"> Create an account </Link>
           )}
         </div>
 
         <div className="flex justify-center">
           {type === "sign up" ? (
             <>
-              <a href="/forgotpass" className="text-gray-01 text-sm font-bold">Forgot Password</a>
+              <Link to ="/forgotpass" className="text-gray-01 text-sm font-bold"> Forgot Password </Link>
             </>
           ) : (
-            <a href="/forgotpass" className="text-gray-01 text-sm font-bold">Forgot </a>
+            <Link to ="/forgotpass" className="text-gray-01 text-sm font-bold"> Forgot </Link>
           )}
         </div>
 
@@ -95,13 +96,10 @@ const AuthLayout = (props) => {
   );
 };
 
+// Validasi tipe props
 AuthLayout.propTypes = {
   children: PropTypes.node.isRequired,
-  type: PropTypes.string,
-};
-
-AuthLayout.defaultProps = {
-  type: 'sign in',
+  type: PropTypes.string.isRequired,
 };
 
 export default AuthLayout;
