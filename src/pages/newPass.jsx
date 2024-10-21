@@ -1,11 +1,11 @@
 import FormForgotPass from "../components/Fragments/FormForgotPass";
-import Authlayout from "../components/Layouts/Authlayout";
+import AuthLayout from "../components/Layouts/AuthLayout";
 
 const ForgotPass = () => {
   return (
-    <Authlayout type="new pass">
+    <AuthLayout type="new pass">
       <ForgotPass />
-    </Authlayout>
+    </AuthLayout>
   );
 };
 
