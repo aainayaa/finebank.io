@@ -5,6 +5,10 @@ import FormForgotPass from "./pages/newPass";
 
 const App = () => {
   const myRouter = createBrowserRouter([
+     {
+      path: "/",
+      element: <div>Halaman Utama</div>,
+    },
     {
       path: "/login",
       element: <SignInPage/>,
