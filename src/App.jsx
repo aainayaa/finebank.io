@@ -3,12 +3,14 @@ import SignInPage from "./pages/signIn";
 import SignUpPage from "./pages/signUp";
 import FormForgotPass from "./pages/newPass"; 
 import ErrorRoute from "./pages/errorRoute";
+import DashboardPage from "./pages/dashboard";
+import BalancePage from "./pages/balance";
 
 const App = () => {
   const myRouter = createBrowserRouter([
     {
       path: "/",
-      element: <div>Halaman Utama</div>,
+      element: <DashboardPage />,
       errorElement: <ErrorRoute/>
     },
     {
@@ -22,6 +24,10 @@ const App = () => {
     {
       path:"/forgotpass",
       element:<FormForgotPass/>
+    },
+    {
+      path: "/balance",
+      element: <BalancePage />
     }
   ]);
 
