@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
 import accounts from "../../../data/accounts";
 import Card from "../../Elements/Card";
-import { icon } from "../../Elements/Icon";
 import Stepper from "../../Elements/Stepper";
+import { Link } from "react-router-dom";
+import { Icon } from "../../Elements/Icon";
 
 const CardBalance = () => {
+    // const balanceCard = accounts.map((account) => (<div key={account.id}>{account.bankName}</div>));
     const balanceCard = accounts.map((account) => (
         <div key={account.id} className="p-2">
             <div className="flex justify-between">
@@ -44,5 +45,10 @@ const CardBalance = () => {
             </div>
         </div>
     ));
+
+    return (
+        <Card title="Total Balance" desc={<Stepper desc={balanceCard} />} />
+    )
 }
+
 export default CardBalance

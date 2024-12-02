@@ -29,7 +29,7 @@ const FormSignUp = () => {
         />
       </div>
       <Button variant="bg-primary w-full text-white" type="submit">
-        Register
+        Sign Up
       </Button>
     </form>
   );

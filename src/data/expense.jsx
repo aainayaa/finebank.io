@@ -1,4 +1,5 @@
-import { Icon } from "../components/Elements/Icon/index"
+import { Icon } from "../components/Elements/Icon"
+
 export const expensesBreakdowns = [
     {
       id: 1,
@@ -53,43 +54,50 @@ export const expensesBreakdowns = [
   export const expensesStatistics = [
     {
       id: 1,
-      date: "17 Sun",
+      date: "2023-05-17",
+      day: "Sun",
       amountThisWeek: 250000,
       amountLastWeek: 50000,
     },
     {
       id: 2,
-      date: "18 Mon",
+      date: "2023-05-18",
+      day: "Mon",
       amountThisWeek: 50000,
       amountLastWeek: 10000,
     },
     {
       id: 3,
-      date: "19 Tue",
+      date: "2023-05-19",
+      day: "Tue",
       amountThisWeek: 10000,
       amountLastWeek: 50000,
     },
     {
       id: 4,
-      date: "20 Wed",
+      date: "2023-05-20",
+      day: "Wed",
       amountThisWeek: 50000,
       amountLastWeek: 50000,
     },
     {
       id: 5,
-      date: "21 Thu",
+      date: "2023-05-21",
+      day: "Thu",
       amountThisWeek: 50000,
       amountLastWeek: 10000,
     },
     {
       id: 6,
-      date: "22 Fri",
+      date: "2023-05-22",
+      day: "Fri",
       amountThisWeek: 250000,
       amountLastWeek: 10000,
     },
     {
       id: 7,
-      date: "23 Sat",
+      date: "2023-05-23",
+      day: "Sat",
       amountThisWeek: 50000,
       amountLastWeek: 10000,
     },

@@ -1,28 +1,15 @@
-import PropTypes from 'prop-types';
-import Input from './Input';
-import Label from './Label';
+
+import Label from './Label'
+import Input from './Input'
 
 const LabeledInput = (props) => {
-  const { label, name, type, placeholder } = props;
-
+    const { label, name, type, placeholder } = props;
   return (
     <>
-      <Label htmlFor={name}>{label}</Label>
-      <Input name={name} type={type} placeholder={placeholder} />
+        <Label htmlFor={name}>{label}</Label>
+        <Input name={name} type={type} placeholder={placeholder} />
     </>
-  );
-};
+  )
+}
 
-LabeledInput.propTypes = {
-  label: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  type: PropTypes.string,
-  placeholder: PropTypes.string,
-};
-
-LabeledInput.defaultProps = {
-  type: 'text',
-  placeholder: '',
-};
-
-export default LabeledInput;
+export default LabeledInput

@@ -5,7 +5,6 @@ import MobileStepper from '@mui/material/MobileStepper';
 import Button from '@mui/material/Button';
 import KeyboardArrowLeft from '@mui/icons-material/KeyboardArrowLeft';
 import KeyboardArrowRight from '@mui/icons-material/KeyboardArrowRight';
-import PropTypes from 'prop-types';  // Import PropTypes
 
 const Stepper = (props) => {
     const { desc } = props;
@@ -21,45 +20,49 @@ const Stepper = (props) => {
         setActiveStep((prevActiveStep) => prevActiveStep - 1);
     };
 
-    const dataNum = desc.length;
+    const dataNum = desc.length
 
     return (
         <>
-            <div> {desc[activeStep]} </div>
-            <MobileStepper
-                variant="dots"
-                steps={dataNum}
-                position="static"
-                activeStep={activeStep}
-                sx={{ maxWidth: 400, flexGrow: 1 }}
-                nextButton={
-                    <Button size="small" onClick={handleNext} disabled={activeStep === dataNum - 1}>
-                        Next
-                        {theme.direction === 'rtl' ? (
-                            <KeyboardArrowLeft />
-                        ) : (
-                            <KeyboardArrowRight />
-                        )}
-                    </Button>
-                }
-                backButton={
-                    <Button size="small" onClick={handleBack} disabled={activeStep === 0}>
-                        {theme.direction === 'rtl' ? (
-                            <KeyboardArrowRight />
-                        ) : (
-                            <KeyboardArrowLeft />
-                        )}
-                        Back
-                    </Button>
-                }
-            />
+        <div>{desc[activeStep]}</div>
+        <MobileStepper
+            variant="dots"
+            steps={dataNum}
+            position="static"
+            activeStep={activeStep}
+            sx={{ 
+                maxWidth: "100%", 
+                flexGrow: 1,
+                "& .MuiMobileStepper-dot": {
+                    backgroundColor: "darkgray",
+                },
+                "& .MuiMobileStepper-dotActive": {
+                    backgroundColor: "#299D91",
+                },
+             }}
+            nextButton={
+                <Button size="small" onClick={handleNext} sx={{ color: "black", fontWeigt: "bold" }} disabled={activeStep === dataNum - 1}>
+                    Next
+                    {theme.direction === 'rtl' ? (
+                        <KeyboardArrowLeft />
+                    ) : (
+                        <KeyboardArrowRight />
+                    )}
+                </Button>
+            }
+            backButton={
+                <Button size="small" onClick={handleBack} sx={{ color: "black", fontWeigt: "bold" }} disabled={activeStep === 0}>
+                    {theme.direction === 'rtl' ? (
+                        <KeyboardArrowRight />
+                    ) : (
+                        <KeyboardArrowLeft />
+                    )}
+                    Previous
+                </Button>
+            }
+        />
         </>
     );
-};
+}
 
-// Adding prop validation
-Stepper.propTypes = {
-    desc: PropTypes.arrayOf(PropTypes.string).isRequired, // desc should be an array of strings
-};
-
-export default Stepper;
+export default Stepper
