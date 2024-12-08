@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 
 import Label from './Label'
 import Input from './Input'
