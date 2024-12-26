@@ -1,16 +1,27 @@
-/* eslint-disable react/prop-types */
+import PropTypes from 'prop-types';
+import Label from './Label';
+import Input from './Input';
 
-import Label from './Label'
-import Input from './Input'
-
-const LabeledInput = (props) => {
-    const { label, name, type, placeholder } = props;
+const LabeledInput = ({ label, name, type, placeholder, register }) => {
   return (
     <>
-        <Label htmlFor={name}>{label}</Label>
-        <Input name={name} type={type} placeholder={placeholder} />
+      <Label htmlFor={name}>{label}</Label>
+      <Input 
+        name={name} 
+        type={type} 
+        placeholder={placeholder} 
+        register={register}
+      />
     </>
-  )
-}
+  );
+};
 
-export default LabeledInput
+LabeledInput.propTypes = {
+  label: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired,
+  placeholder: PropTypes.string,
+  register: PropTypes.func,
+};
+
+export default LabeledInput;

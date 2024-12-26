@@ -1,5 +1,5 @@
-import Input from "../Elements/LabeledInput/Input"
 import NotificationsIcon from '@mui/icons-material/Notifications';
+import Input from "../Elements/LabeledInput/Input";
 
 const Header = () => {
     const date = new Date().toDateString().slice(4);
