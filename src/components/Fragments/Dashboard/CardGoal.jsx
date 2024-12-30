@@ -1,10 +1,62 @@
-import { goals } from "../../../data/goals";
+import { useEffect, useState, useContext } from "react";
+import axios from "axios";
 import Card from "../../Elements/Card";
 import { Icon } from "../../Elements/Icon";
 import CompositionExample from "../../Elements/GaugeChart";
+import { NotifContext } from "../../../context/notifContext";
+import { AuthContext } from "../../../context/authContext";
+import { useNavigate } from "react-router-dom";
 
 const CardGoal = () => {
+  const { setOpen, setMsg } = useContext(NotifContext);
+  const { setIsLoggedIn, setName } = useContext(AuthContext);
+  const navigate = useNavigate();
+
+  const [goals, setGoals] = useState({ presentAmount: 0, targetAmount: 0 });
   const chartValue = goals.presentAmount * 100 / goals.targetAmount;
+
+  const getData = async () => {
+    try {
+      const refreshToken = localStorage.getItem("refreshToken");
+      const response = await axios.get(
+        "https://jwt-auth-eight-neon.vercel.app/goals",
+        {
+          headers: {
+            Authorization: `Bearer ${refreshToken}`,
+          },
+        }
+      );
+
+      
+      setGoals({
+        presentAmount: response.data.data[0].present_amount,
+        targetAmount: response.data.data[0].target_amount,
+      });
+
+    } catch (error) {
+      if (error.response) {
+        if (error.response.status === 401) {
+          setOpen(true);
+          setMsg({
+            severity: "error",
+            desc: "Session Has Expired. Please Login.",
+          });
+
+          setIsLoggedIn(false);
+          setName("");
+
+          localStorage.removeItem("refreshToken");
+          navigate("/login");
+        } else {
+          console.log(error.response);
+        }
+      }
+    }
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
 
   return (
     <Card

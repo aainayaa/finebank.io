@@ -1,7 +1,6 @@
-/* eslint-disable react/prop-types */
 import { createContext, useState } from "react";
+import PropTypes from "prop-types";
 
-// eslint-disable-next-line react-refresh/only-export-components
 export const ThemeContext = createContext();
 
 export const ThemeContextProvider = ({ children }) => {
@@ -12,4 +11,8 @@ export const ThemeContextProvider = ({ children }) => {
       {children}
     </ThemeContext.Provider>
   );
+};
+
+ThemeContextProvider.propTypes = {
+  children: PropTypes.node.isRequired,
 };

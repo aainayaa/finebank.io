@@ -5,7 +5,9 @@ import reactHooks from 'eslint-plugin-react-hooks'
 import reactRefresh from 'eslint-plugin-react-refresh'
 
 export default [
-  { ignores: ['dist'] },
+  {
+    ignores: ['dist'],
+  },
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
@@ -33,6 +35,27 @@ export default [
         'warn',
         { allowConstantExport: true },
       ],
+    },
+  },
+  {
+    env: {
+      browser: true,
+      es2021: true,
+      'cypress/globals': true,
+    },
+    extends: [
+      'eslint:recommended',
+      'plugin:cypress/recommended',
+    ],
+    plugins: [
+      'cypress',
+    ],
+    parserOptions: {
+      ecmaVersion: 12,
+      sourceType: 'module',
+    },
+    rules: {
+      'no-undef': 'off', // Matikan aturan no-undef untuk Cypress
     },
   },
 ]
