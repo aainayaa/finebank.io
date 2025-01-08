@@ -133,7 +133,7 @@ import { useNavigate } from "react-router-dom";
 
 const CardGoal = () => {
   const { setOpen, setMsg } = useContext(NotifContext);
-  const { setIsLoggedIn, setName } = useContext(AuthContext);
+  const { name, setName, setIsLoggedIn } = useContext(AuthContext); // Menggunakan name dari AuthContext
   const navigate = useNavigate();
 
   const [goals, setGoals] = useState({ presentAmount: 0, targetAmount: 0 });
@@ -161,6 +161,12 @@ const CardGoal = () => {
         presentAmount: response.data.data[0].present_amount,
         targetAmount: response.data.data[0].target_amount,
       });
+
+      // Jika username disediakan dari response, set nama pengguna
+      if (response.data && response.data.username) {
+        setName(response.data.username); // Menyimpan username di AuthContext
+      }
+
       setIsLoading(false); // Sembunyikan loader saat data sudah diambil
     } catch (error) {
       setIsLoading(false); // Sembunyikan loader meskipun terjadi error
@@ -174,7 +180,6 @@ const CardGoal = () => {
 
           setIsLoggedIn(false);
           setName("");
-
           localStorage.removeItem("refreshToken");
           navigate("/login");
         } else {
@@ -212,7 +217,7 @@ const CardGoal = () => {
                     <Icon.Edit />
                   </div>
                 </div>
-                <div>Nov, 2023</div>
+                <div>Welcome, {name || "User"}</div> {/* Menampilkan username */}
               </div>
               <div className="border-b-2 my-4"></div>
               <div className="flex justify-between">
